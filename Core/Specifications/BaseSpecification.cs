@@ -28,7 +28,7 @@ public class BaseSpecification<T>(Expression<Func<T, bool>>? criteria) : ISpecif
 
         if (Criteria != null)
         {
-            query.Where(Criteria);
+            query = query.Where(Criteria);
         }
 
         return query;

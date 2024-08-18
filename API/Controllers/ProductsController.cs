@@ -9,7 +9,7 @@ namespace API.Controllers
     public class ProductsController(IGenericRepository<Product> repo) : BaseApiController
     {
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts(ProductSpecParams specParams)
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts([FromQuery] ProductSpecParams specParams)
         {
             var spec = new ProductSpecification(specParams);
 
