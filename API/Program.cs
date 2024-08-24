@@ -1,6 +1,6 @@
+using API.Middlewares;
 using Core.Interfaces;
 using Infrastructure.Data;
-using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +18,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
+
+// Exception handling
+app.UseMiddleware<ExceptionMiddleware>();
+
+// Add Cors
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod()
+    .WithOrigins("http://localhost:4200,https://localhost:4200"));
 
 app.MapControllers();
 
