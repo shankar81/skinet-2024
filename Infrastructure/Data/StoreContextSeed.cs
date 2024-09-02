@@ -6,7 +6,7 @@ namespace Infrastructure.Data;
 
 public class StoreContextSeed
 {
-    public static async void SeedData(StoreContext context)
+    public static async Task SeedData(StoreContext context)
     {
         if (!context.Products.Any())
         {
